@@ -46,7 +46,7 @@ class Array_using_ArrayList
      */
 
      public static void main(String[] args) {
-        
+        +
 
         ///scanner class obj
         Scanner sc = new Scanner(System.in);
