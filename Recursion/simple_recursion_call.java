@@ -5,9 +5,9 @@ class SimpleRecursionCall
         {
              if(n > 0)
              {
-                System.out.println(n);
+                System.out.println(n); //satck activation recored
                 A(n-1);
-                System.out.println(n);
+                System.out.println(n); ///its satck intention pointer
              }
              else
              {
