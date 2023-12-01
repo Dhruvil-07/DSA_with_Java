@@ -5,36 +5,37 @@ import java.util.Scanner;
 class factorial 
 {
 
-    static int fact(int n)
+    static void fectorial(int n , int result)
     {
-        if(n == 1 )
+        if(n == 0)
         {
-            return 1;
+            System.out.println("Factorial is : " + result);
+            return;
         }
         else
         {
-             return n * fact(n-1);
+             result = result * n;
+             fectorial(n-1, result);
         }
     }
+    
 
 
 
     public static void main(String[] args) 
     {
-        //scanner class obj 
+    
+        //Scanner class obj
         Scanner sc = new Scanner(System.in);
 
-        //var for user input and result
-        int num , result;
-
-        System.out.println("Enter number : ");
-        num = sc.nextInt();
+        //variable for user input
+        int num; //we will find fectorial of thos number
+        int result = 1; //it store factorial result
         
-        result = fact(num);
+        num = sc.nextInt();
 
-        //bioth are returnn same value
-        System.out.println(result);
-        System.out.println(fact(num));
+        fectorial(num , result);
     }
     
 }
+ 
