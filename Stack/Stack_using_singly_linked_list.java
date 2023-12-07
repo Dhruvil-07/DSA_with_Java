@@ -101,6 +101,7 @@ class StackUsingSLL
         }
     }
 
+    
     //pop element
     void pop_element()
     {
@@ -119,6 +120,8 @@ class StackUsingSLL
         }
     }
 
+
+    
     //display
     void display()
     {
