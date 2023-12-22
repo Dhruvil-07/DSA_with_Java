@@ -109,7 +109,7 @@ class Stack
         }
         else
         {
-            top--;;
+            top--;
             System.out.println("Delete successfully...");
             display();
             return;
