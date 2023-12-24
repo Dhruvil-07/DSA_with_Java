@@ -1,3 +1,17 @@
+import java.util.Scanner;
+
+class infix
+{
+    public static void main(String[] args) {
+        
+        //Scanner class obj
+        Scanner sc = new Scanner(System.in);
+
+    }
+}
+
+
+
 
 class prefix
 {

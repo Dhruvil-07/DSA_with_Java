@@ -1,48 +1,37 @@
-
 import java.util.Scanner;
 
 class infix
 {
     public static void main(String[] args) 
     {
-        
-        //scanner class obect
+       //scanner class obect
         Scanner sc = new Scanner(System.in);
-
-        //infix string input
-        String user_infix;
-        System.out.println("Enter Expression : ");
-        user_infix = sc.next();
-
-        //postfix class obj
-        postfix ps = new postfix(user_infix);
 
         //var for choice and looping
         int choice;
-        boolean check = true;
+        String check = "y";
 
-        while (check) 
+        while(check.equalsIgnoreCase("y"))
         {
+            //infix string input
+            String user_infix;
+            System.out.println("Enter Expression : ");
+            user_infix = sc.next();
+
+            //postfix class obj
+            postfix ps = new postfix(user_infix);
+
+            //call display method of  postfix class
+            ps.display();
+
+            //for countinue programe for same as well as annother expression
             System.out.println();
-            System.out.println("1. Infix to Postfix...");
-            System.out.println("2. Exit");
-
-            System.out.println("Enter choice : ");
-            choice = sc.nextInt();
-
-            switch (choice) {
-                
-                case 1 : System.out.println("Postfix obj call");
-                         ps.display();
-                         break;
-
-                case 2 : check = false;
-                         break;
-
-                default : System.out.println("Invalid choice...");
-            }
+            System.out.println("Press y/n");
+            System.out.println("DO you want to continue : ");
+            check = sc.next();
         }
 
+        System.out.println("Programe End...");
     }
 }
 
@@ -158,20 +147,12 @@ class postfix
             }
         }
 
-
-
         //pop all reamiing vlaus
        while (top != -1) {
             pop();
        }
 
-
        //print esult string 
-       System.out.println(result_expression);
-
-
+       System.out.println( "Postfix Expression : " + result_expression);
     }
-
-
-
 }
