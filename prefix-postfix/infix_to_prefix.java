@@ -23,8 +23,7 @@ class Infix
             prefix pr = new prefix(user_infix);
 
             //call display method  
-            pr.display();
-
+            pr.conversion();
 
             //for continue programe or not
             System.out.println();
@@ -40,11 +39,12 @@ class Infix
 
 
 
+
 class prefix
 {
     String infix_expression;
-    String result_expression = new String();
-    String final_result_expresion = new String();
+    String result_expression = "";
+    int success = 1; 
     char a[];
     int top;
 
@@ -94,6 +94,10 @@ class prefix
         {
             return 3;
         }
+        else if((ch >= 'a' && ch<= 'z' ) ||(ch>='A' && ch<='Z'))
+        {
+            return 0;
+        }
         else
         {
             return -1;
@@ -104,7 +108,7 @@ class prefix
 
 
     //method  for conver infix to prefix
-    void display()
+    void conversion()
     {
         for(int i = infix_expression.length() - 1 ; i>=0 ; i--)
         {
@@ -113,13 +117,69 @@ class prefix
             //character prescedence 
             int ch_prec = prec(ch);
 
-            //stack's top element precedece
-            int top_prec = prec(ch);
-        }
+            if(ch_prec == -1)
+            {
+                System.out.println("You puted invalid character in expression");
+                success = 0;
+                break;
+            }
+            else if(ch_prec == 0)
+            {
+                add(ch);
+            }
+            else if(top == -1)
+            {
+                push(ch);
+            }
+            else
+            {
+                //stack's top element precedence
+                int top_perc = prec(a[top]);
 
+                if(ch_prec > top_perc || ch_prec == top_perc)
+                {
+                    push(ch);
+                }
+                else
+                {
+                    while (ch_prec < top_perc)
+                    {
+                        pop(); 
+
+                        if(top == -1)
+                        {
+                            push(ch);
+                            break;
+                        }
+                        else
+                        {
+                            top_perc = prec(a[top]);
+                            if(top_perc == ch_prec)
+                            {
+                                push(ch);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }      
+        }    
+
+            //no error in expression opreation then part will execute which is written below.
+            if(success == 1)
+            {
+                //loop run until stack is not empty
+                while (top != -1) 
+                {
+                    pop();
+                }
+
+                //reverse our result
+                for(int i = result_expression.length() - 1 ; i>=0 ; i--)
+                {
+                        char rev = result_expression.charAt(i);
+                        System.out.print(rev);
+                }
+            }
     }
-
-
-    
-
 }
