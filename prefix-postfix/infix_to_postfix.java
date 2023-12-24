@@ -41,6 +41,7 @@ class postfix
 {
     String infix_expression;
     String result_expression = new String();
+    int success = 1;
     char a[];
     int top;
 
@@ -93,6 +94,10 @@ class postfix
         {
             return 3;
         }
+        else if((ch >= 'a' && ch<= 'z') || (ch<='Z' && ch>='A') ) 
+        {
+            return 0;
+        }
         else
         {
             return -1;
@@ -109,6 +114,12 @@ class postfix
             int ch_prec = prec(ch);
 
             if(ch_prec == -1)
+            {
+                success = 0;
+                System.out.println("You puted invalid character in expression...");
+                break;
+            }
+            else if(ch_prec == 0)
             {
                 addtoresult(ch);
             }
@@ -147,12 +158,20 @@ class postfix
             }
         }
 
-        //pop all reamiing vlaus
-       while (top != -1) {
-            pop();
-       }
 
-       //print esult string 
-       System.out.println( "Postfix Expression : " + result_expression);
+        //if no error in expression operation then excute part which writen below
+        if(success == 1)
+        {
+            System.out.println(success);
+            //pop all reamiing vlaus
+            while (top != -1) {
+                    pop();
+            }
+
+            //print result string 
+            System.out.println( "Postfix Expression : " + result_expression);
+        }
+
+       
     }
 }
