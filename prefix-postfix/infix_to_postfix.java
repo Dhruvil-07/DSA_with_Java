@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class infix
+class Infix
 {
     public static void main(String[] args) 
     {
