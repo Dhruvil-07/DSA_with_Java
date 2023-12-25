@@ -18,7 +18,21 @@ class BinaryTreeStructure
         //create binary tree
         Node root = b.create();
 
+        //print main root nnode of tree
         System.out.println(root.data);
+
+        //inorer travels
+        b.inorder(root);
+
+        System.out.println();
+
+        //preorder travels
+        b.preorder(root);
+
+        System.out.println();
+
+        //post order travels
+        b.postorder(root);
     }
 }
 
@@ -77,5 +91,53 @@ class BinaryTree
         return root;
     }
 
+
+
+    //inorder travel
+    void inorder(Node root)
+    {
+        if(root == null)
+        {
+            return;
+        }
+        else
+        {
+            inorder(root.left);
+            System.out.print(root.data + " ");
+            inorder(root.right);
+        }
+    }
+
+
+    //preorder travel
+    void preorder(Node root)
+    {
+        if(root == null)
+        {
+            return;
+        }
+        else
+        {
+            System.out.print(root.data + " ");
+            preorder(root.left);
+            preorder(root.right);
+        }
+    }
+
+
+    //post order travell
+    void postorder(Node root)
+    {
+        if(root == null)
+        {
+            return;
+        }
+        else
+        {
+            postorder(root.left);
+            postorder(root.right); 
+            System.out.print(root.data + " ");
+        }
+    }
 
 }
