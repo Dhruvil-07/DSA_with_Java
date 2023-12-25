@@ -94,10 +94,15 @@ class postfix
         {
             return 3;
         }
+        else if(ch == ')' || ch == '(')
+        {
+            return 4;
+        }
         else if((ch >= 'a' && ch<= 'z') || (ch<='Z' && ch>='A') ) 
         {
             return 0;
         }
+        
         else
         {
             return -1;
@@ -130,7 +135,6 @@ class postfix
             else 
             {
                int top_perc = prec(a[top]);
-
 
                if(ch_prec == 3 && top_perc == 3)
                {
