@@ -8,9 +8,15 @@ class BinaryTreeStructure
 {
     public static void main(String[] args) {
         
+
+        //scanner class obj
+        Scanner sc = new Scanner(System.in);
+
+        //instrucion
         System.out.println("Welcome to binary tree programe....");
         System.out.println("if you want to enter child , enter data");
         System.out.println("if you dont want to enter child , enter -1");
+        System.out.println();
 
         //BinaryTree class obj 
         BinaryTree b = new BinaryTree();
@@ -19,20 +25,46 @@ class BinaryTreeStructure
         Node root = b.create();
 
         //print main root nnode of tree
-        System.out.println(root.data);
+        //System.out.println(root.data);
 
-        //inorer travels
-        b.inorder(root);
+        //var for user choice and looping 
+        int choice;
+        boolean check = true;
 
-        System.out.println();
+        while(check)
+        {
+            System.out.println();
+            System.out.println("1. Inorder Travels...");
+            System.out.println("2. Preorder travels...");
+            System.out.println("3. Post orderr travels...");
+            System.out.println("4. Exit...");
+            System.out.println();
 
-        //preorder travels
-        b.preorder(root);
+            System.out.println("Enter your choice : ");
+            choice = sc.nextInt();
 
-        System.out.println();
+            switch (choice) {
+                case 1: System.out.println("Inorder Travels :- ");
+                        b.inorder(root);
+                        System.out.println();
+                        break;
 
-        //post order travels
-        b.postorder(root);
+                case 2 : System.out.println("Preorder Travels...");
+                         b.preorder(root);
+                         System.out.println();
+                         break;
+
+                case 3 : System.out.println("Postorder Travels...");
+                         b.postorder(root);
+                         System.out.println();
+                         break;
+                    
+                case 4 : check = false;
+                         break;
+
+                default : System.out.println("Invalid Choice....");
+            }
+        }
     }
 }
 
