@@ -1,4 +1,5 @@
 //count total node of tree
+//count total of all nodes data
 
 class q1
 {
@@ -13,9 +14,10 @@ class q1
         //create tree
         Node root = b.create(a);
 
-        //total root of tree
+        //total root of tree and total data
         b.count(root);
         System.out.println("Total root of tree : " + b.counter);
+        System.out.println("Total sum of trees nodes : "+ b.sum);
     }
 }
 
@@ -66,7 +68,8 @@ class binarytree
 
 
     //count node method
-    int counter = 0;
+    int counter = 0; //for count nodes
+    int sum = 0;  //for count nodes data
     void count(Node  root)
     {
         if(root == null)
@@ -76,6 +79,7 @@ class binarytree
         else
         {
             counter++;
+            sum += root.data;
             count(root.left);
             count(root.right);
         }
