@@ -2,6 +2,8 @@
 //binary tree creation by user input using links
 //inorder , preorder , postorder travels
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 class BinaryTreeStructure
@@ -37,7 +39,8 @@ class BinaryTreeStructure
             System.out.println("1. Inorder Travels...");
             System.out.println("2. Preorder travels...");
             System.out.println("3. Post orderr travels...");
-            System.out.println("4. Exit...");
+            System.out.println("4. Level orderr travels...");
+            System.out.println("5. Exit...");
             System.out.println();
 
             System.out.println("Enter your choice : ");
@@ -59,7 +62,13 @@ class BinaryTreeStructure
                          System.out.println();
                          break;
                     
-                case 4 : check = false;
+                case 4 : System.out.println("Levelorder Travels...");
+                         b.levelorder(root);
+                         System.out.println();
+                         break;
+
+
+                case 5 : check = false;
                          break;
 
                 default : System.out.println("Invalid Choice....");
@@ -169,6 +178,50 @@ class BinaryTree
             postorder(root.left);
             postorder(root.right); 
             System.out.print(root.data + " ");
+        }
+    }
+
+
+
+    //level order travels
+    void levelorder(Node root)
+    {
+        Queue<Node> q = new LinkedList<>();
+
+        q.add(root);
+        q.add(null);
+
+        while (!q.isEmpty())
+        {
+            Node currentnode = q.remove();
+            
+            if(currentnode == null)
+            {
+                System.out.println();
+
+                if(!q.isEmpty())
+                {
+                    q.add(null);
+                }
+                else
+                {
+                    break;
+                }
+            }
+            else
+            {
+                System.out.print(currentnode.data + " ");
+
+                if(currentnode.left != null)
+                {
+                    q.add(currentnode.left);
+                }
+
+                if(currentnode.right != null)
+                {
+                    q.add(currentnode.right);
+                }
+            }
         }
     }
 

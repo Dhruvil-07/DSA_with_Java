@@ -191,7 +191,6 @@ class binarytree
                 {
                     q.add(currentNode.right);
                 }
-
               
             }
         }
