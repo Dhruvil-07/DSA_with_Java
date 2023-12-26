@@ -1,5 +1,9 @@
 //count total node of tree
 //count total of all nodes data
+//count hight of tree
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 class q1
 {
@@ -9,7 +13,7 @@ class q1
         binarytree b = new binarytree();
 
         //tress values
-        int a[] = new int[]{10,20,30,-1,-1,40,-1,-1,50,60,-1,-1,70,-1,-1};
+        int a[] = new int[]{10,20,30,-1,-1,40,-1,-1,50,60,-1,-1,70,-1,80,90,-1,-1,-1};
 
         //create tree
         Node root = b.create(a);
@@ -18,6 +22,10 @@ class q1
         b.count(root);
         System.out.println("Total root of tree : " + b.counter);
         System.out.println("Total sum of trees nodes : "+ b.sum);
+
+        //total total  level of tree / hight of tree
+        b.hight(root);
+        System.out.println("hight of tree : " + b.level);
     }
 }
 
@@ -82,6 +90,49 @@ class binarytree
             sum += root.data;
             count(root.left);
             count(root.right);
+        }
+    }
+
+
+    //level count
+    int level = 0;
+    //calc hight of tree
+    void hight(Node root)
+    {
+        
+        Queue<Node> q = new LinkedList<>();
+
+        q.add(root);
+        q.add(null);
+
+        while(!q.isEmpty())
+        {
+            Node currentnode = q.remove();
+
+            if(currentnode == null)
+            {
+                level++;
+                if(q.isEmpty())
+                {
+                    break;
+                }
+                else
+                {
+                    q.add(null);
+                }
+            }
+            else
+            {
+                if(currentnode.left != null)
+                {
+                    q.add(currentnode.left);
+                }
+
+                if(currentnode.right != null)
+                {
+                    q.add(currentnode.right);
+                }
+            }
         }
     }
 
