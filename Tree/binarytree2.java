@@ -2,6 +2,9 @@
 //binary tree creation by static value using links
 //inorder , preorder , postorder travels
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 class binarytree2 
 {
     public static void main(String[] args) {
@@ -34,6 +37,12 @@ class binarytree2
         System.out.println();
         System.out.println("Post oreder Travels : ");
         b.postorder(root);
+
+
+        //level order Travels
+        System.out.println();
+        System.out.println("level oreder Travels : ");
+        b.levelorder(root);
     }
 }
 
@@ -141,5 +150,51 @@ class binarytree
         }
     }
 
+
+    
+    //level order travels
+    void levelorder(Node root)
+    {
+        //queue for store node to level order travels
+        Queue<Node> q = new LinkedList<>();
+
+        q.add(root);
+        q.add(null);
+
+        while (!q.isEmpty()) 
+        {
+            Node currentNode = q.remove();
+            
+            if(currentNode == null)
+            {
+                System.out.println();
+                
+                if(!q.isEmpty())
+                {
+                    q.add(null);
+                }
+                else
+                {
+                    break;
+                }
+            }
+            else
+            {
+                System.out.print(currentNode.data + " ");
+
+                if(currentNode.left != null)
+                {
+                    q.add(currentNode.left);
+                }
+
+                if(currentNode.right != null)
+                {
+                    q.add(currentNode.right);
+                }
+
+              
+            }
+        }
+    }
 
 }
