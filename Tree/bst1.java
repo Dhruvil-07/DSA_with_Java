@@ -31,6 +31,11 @@ class bst1
         //create successfully
         bst.converse_inorder(root);
 
+        System.out.println();
+
+        //serch element in bst
+        boolean found = bst.serch(root, 1);
+        System.out.println(found);
 
     }
 }
@@ -111,5 +116,29 @@ class binaryserchtree
         System.out.print(root.data + " ");
         converse_inorder(root.left);
     }
+
+
+    //elemetn serch
+    boolean serch(Node root , int val)
+    {
+        if(root == null)
+        {
+            return false;
+        }
+
+        if(root.data > val)
+        {
+            return serch(root.left, val);
+        }
+        else if(root.data == val)
+        {
+            return true;
+        }
+        else
+        {
+            return serch(root.right, val);
+        }
+    }
+
 
 }
