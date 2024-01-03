@@ -14,6 +14,11 @@ class linked_list_using_recursion
 
         //dispaly linked list list reverse order
         s.reverse_ll(s.head);
+
+        System.out.println();
+
+        //get sum of all node in using recursion
+        System.out.println("Total : " + s.sum(s.head));
    }
 }
 
@@ -89,4 +94,18 @@ class sll
     }
 
     
+
+
+    //sum of all linked lsit data
+    int sum(Node temp)
+    {
+        if(temp == null)
+        {
+            return 0;
+        }
+        int total = temp.data;
+        total = total + sum(temp.next);
+        return total;
+    }
+
 }
