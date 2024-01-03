@@ -105,9 +105,7 @@ class binarytree
         }
         else
         {
-            total = root.data;
-            total = total + sum(root.left);
-            total = total + sum(root.right);
+            total = root.data + sum(root.left) + sum(root.right);
         }
         return total;
     }
