@@ -9,6 +9,11 @@ class linked_list_using_recursion
         s.insert(30);
 
         s.display(s.head);
+
+        System.out.println();
+
+        //dispaly linked list list reverse order
+        s.reverse_ll(s.head);
    }
 }
 
@@ -70,6 +75,18 @@ class sll
     }
 
 
+
+    //display reverse linked list using recursion
+    void reverse_ll(Node temp)
+    {
+        if(temp == null)
+        {
+            return;
+        }
+
+        reverse_ll(temp.next);
+        System.out.print(temp.data + " ");
+    }
 
     
 }
