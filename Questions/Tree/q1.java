@@ -22,6 +22,7 @@ class q1
         b.count(root);
         System.out.println("Total root of tree : " + b.counter);
         System.out.println("Total sum of trees nodes : "+ b.sum);
+        System.out.println("Total sum of trees nodes : " + b.sum(root));
 
         //total total  level of tree / hight of tree
         b.hight(root);
@@ -91,6 +92,24 @@ class binarytree
             count(root.left);
             count(root.right);
         }
+    }
+
+
+    //second approch to get some of all nodos of tree
+    int total = 0;
+    int sum(Node root)
+    {
+        if(root == null)
+        {
+            return 0;
+        }
+        else
+        {
+            total = root.data;
+            total = total + sum(root.left);
+            total = total + sum(root.right);
+        }
+        return total;
     }
 
 
