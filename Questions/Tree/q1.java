@@ -1,6 +1,7 @@
 //count total node of tree
 //count total of all nodes data
 //count hight of tree
+//how many leaf node in tree
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -27,6 +28,10 @@ class q1
         //total total  level of tree / hight of tree
         b.hight(root);
         System.out.println("hight of tree : " + b.level);
+
+        //hight of tree by second approch
+        int tree_hight = b.tree_hight(root);
+        System.out.println("tree hight : " + tree_hight);
     }
 }
 
@@ -153,4 +158,20 @@ class binarytree
         }
     }
 
+
+
+    //find hight using recursion
+    int tree_hight(Node root)
+    {
+        if(root  == null)
+        {
+            return 0;
+        }
+
+        int left = tree_hight(root.left);
+        int right = tree_hight(root.right);
+        int myhight = Math.max(left, right) + 1;
+
+        return myhight;
+    }
 }
