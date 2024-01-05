@@ -26,54 +26,40 @@ Constraints:
  
  */
 
+
+ /*
+  use hashmap technique to find right index for element
+  then put element on that index
+  at last , copy all element from temp array to actual array
+  */
 class Rotata_array
 {
+    static int store_element(int index , int length , int k)
+    {
+        return (index+k)%length;
+    }
+
     public static void main(String[] args) 
     {
-        int nums[] = {-1};
-        int k = 2;
+        int nums[] = {1,2};
+        int k = 3;
 
+        int temp[] = new int[nums.length];
 
-        if(k>=nums.length)
+        for(int i = 0 ; i<nums.length ; i++)
         {
-            //print array
-            for(int i = 0 ; i<nums.length ; i++)
-            {
-                System.out.print(nums[i] + " ");
-            }
-        }
-        else
-        {
-            int temp_array[] = new int[k];
-            int x =0;
-
-            //put ellement in temp array
-            for(int i = nums.length-k ; i<nums.length ; i++)
-            {
-                temp_array[x] = nums[i];
-                x++;
-            }
-
-            //change position of remaing element
-            for(int j = nums.length-1-k ; j>=0 ; j--)
-            {
-                nums[j+k] = nums[j];
-            }
-
-            //put temp elemnt to actual array
-            for(int z = 0 ; z<temp_array.length ; z++)
-            {
-                nums[z] = temp_array[z];
-            }
-
-            //print array
-            for(int i = 0 ; i<nums.length ; i++)
-            {
-                System.out.print(nums[i] + " ");
-            }
-
+            int position = store_element(i, nums.length, k);
+            temp[position] = nums[i];
         }
 
-        
+        for(int i = 0 ; i<temp.length ; i++)
+        {
+            nums[i] = temp[i];
+        }
+
+        for(int i = 0 ; i<nums.length ; i++)
+        {
+            System.out.print(nums[i] + " ");
+        }
     }
-}
+} 
