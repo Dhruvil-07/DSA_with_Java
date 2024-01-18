@@ -115,7 +115,6 @@ class postfix
         for(int i = 0 ; i<infix_expression.length() ; i++)
         {
             char ch = infix_expression.charAt(i);
-
             int ch_prec = prec(ch);
 
             if(ch_prec == -1)
