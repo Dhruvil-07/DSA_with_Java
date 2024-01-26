@@ -1,96 +1,134 @@
-class Solution 
-{
-    public static void main(String[] args) 
+/*
+leat code question no 21.
+
+You are given the heads of two sorted linked lists list1 and list2.
+
+Merge the two lists into one sorted list. The list should be made by splicing together the nodes of the first two lists.
+
+Return the head of the merged linked list.
+
+Exaample 1 :-
+Input: list1 = [1,2,4], list2 = [1,3,4]
+Output: [1,1,2,3,4,4]
+
+Example 2:
+Input: list1 = [], list2 = []
+Output: []
+
+
+Input: list1 = [], list2 = [0]
+Output: [0]
+ */
+
+ class Solution 
+ {
+    static class ListNode
     {
-        linked_list ll = new linked_list();
-        ll.create_linked_list();
-        ListNode final_node = ll.mergeTwoLists(ll.head1,ll.head2);
+        int val;
+        ListNode next;
 
-        System.out.println(final_node.data);
-    }
-
-}
-
-
-class ListNode
-{
-            int data;
-            ListNode next;
-
-            ListNode(int data)
-            {
-                this.data = data;
-                this.next = null;
-            }
-}
-
-class linked_list
-{
-          ListNode head1 = null;
-          ListNode head2 = null;
-
-        void create_linked_list()
+        ListNode(int val)
         {
-          
-            //create first linked list
-            head1 = new ListNode(1);
-            head1.next = new ListNode(2);
-            head1.next.next = new ListNode(4);
-
-
-            //create secondlinked list
-            head2 = new ListNode(1);
-            head2.next = new ListNode(3);
-            head2.next.next = new ListNode(4);
+            this.val = val;
+            this.next = null;
         }
 
+    }
 
 
-        //merge two linked list
-   ListNode mergeTwoLists(ListNode list1, ListNode list2) 
+
+    public static ListNode mergeTwoLists(ListNode list1, ListNode list2) 
     {
-        ListNode temp3 = null;
-        ListNode temp1 = list1;
-        ListNode temp2 = list2;
+        ListNode final_head = null;
+        ListNode tail = null;
 
-        while(temp1 != null && temp2 != null)
+        if(list1 == null && list2 == null)
         {
-            if(temp1.data > temp2.data)
+            final_head = null;
+        }
+        else if(list1 == null)
+        {
+            final_head = list2;
+        }
+        else if(list2 == null)
+        {
+            final_head = list1;
+        }
+        else
+        {
+            //for first node
+            if(list1.val < list2.val)
             {
-                if(temp3 == null)
-                {
-                    temp3 = temp1;
-                    temp1 = temp1.next;
-                }
-                else
-                {
-                    while(temp3.next != null)
-                    {
-                        temp3 = temp3.next;
-                    }
-                    temp3 = temp1;
-                    temp1 = temp1.next;
-                }
+                final_head = list1;
+                tail = final_head;
+                list1 = list1.next;
             }
             else
             {
-                if(temp3 == null)
+                final_head = list2;
+                tail = final_head;
+                list2 = list2.next;
+            }
+
+
+            //for remaining  node
+            while(list1 != null && list2 != null)
+            {
+                if(list1.val < list2.val)
                 {
-                    temp3 = temp2;
-                    temp2 = temp2.next;
+                    tail.next = list1;
+                    tail = tail.next;
+                    list1 = list1.next;
                 }
                 else
                 {
-                    while(temp3.next != null)
-                    {
-                        temp3 = temp3.next;
-                    }
-                    temp3 = temp2;
-                    temp2 = temp2.next;
+                    tail.next  = list2;
+                    tail = tail.next;
+                    list2 = list2.next;
                 }
             }
-        }
 
-        return temp3;
+            //for  remainng node of  one of list
+            while(list1 != null)
+            {
+                tail.next = list1;
+                tail = tail.next;
+                list1 = list1.next;
+            }
+
+            while(list2 != null)
+            {
+                tail.next = list2;
+                tail = tail.next;
+                list2 = list2.next;
+            }
+
+        }
+        return final_head;
+    }
+
+    public static void main(String[] args) 
+    {
+            ListNode head1;
+
+            head1 = new ListNode(1);
+            head1.next = new ListNode(2);
+            head1.next.next = new ListNode(4);
+            
+
+            ListNode head2 = null;
+
+            head2 = new ListNode(1);
+            head2.next = new ListNode(2);
+            head2.next.next = new ListNode(3);
+        
+
+           ListNode final_node = mergeTwoLists(head1 , head2);
+           
+           while(final_node != null)
+           {
+                System.out.print(final_node.val + " ");
+                final_node = final_node.next;
+           }
     }
 }
