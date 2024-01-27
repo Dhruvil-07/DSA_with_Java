@@ -1,6 +1,6 @@
 /*
 -> interview question (AT FANGG COMPANY)
-4
+
  1
  2 9
  3 8 10
