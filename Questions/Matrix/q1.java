@@ -1,6 +1,9 @@
 /*
 -> interview question (AT FANGG COMPANY)
+<<<<<<< HEAD
 
+=======
+>>>>>>> fbb221b24d14bbecebc6937c66d2acc062ea6eda
  1
  2 9
  3 8 10
