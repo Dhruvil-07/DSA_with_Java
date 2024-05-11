@@ -2,9 +2,6 @@
 //creation , travels and serch completed 
 ///delete pending
 
-
-
-
 class bst1 
 {
     public static void main(String[] args) 
