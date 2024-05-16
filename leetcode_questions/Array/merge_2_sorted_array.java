@@ -28,10 +28,10 @@ public class merge_2_sorted_array {
 
     public static void main(String[] args) {
         
-        int[] num1 = {1,2,3,0,0,0};
-        int[] num2 = {2,5,6};
-        int m = 3;
-        int n = 3;
+        int[] num1 = {0,0,0,0,0,0};
+        int[] num2 = {1,2,3,4,5,6};
+        int m = 0;
+        int n = 5;
 
         Solution s = new Solution();
         s.merge(num1, m, num2, n);
@@ -53,11 +53,14 @@ class Solution {
         }
         else if(m == 0)
         {
-            nums1[0] = nums2[0];
+            for(int i = 0 ; i<nums1.length ; i++)
+            {
+                nums1[i] = nums2[i];
+            }
         }
         else
         {
-            while (idx2>-1) {          
+            while ( (p != 0)  && (idx1 != -1)  && (idx2!=-1)) {          
                 if(nums1[idx1] < nums2[idx2])
                 {
                     nums1[p] = nums2[idx2];
@@ -70,7 +73,19 @@ class Solution {
                     p--;
                     idx1--;
                 }
-            }    
+            } 
+            
+            if(idx2 == p)
+            {
+                for(int i = p ; i>-1 ; i--)
+                {
+                    nums1[i] = nums2[i];
+                }
+            }
+            else if(idx2>-1)
+            {
+                nums1[p] = nums2[idx2];
+            }
         }
 
         
