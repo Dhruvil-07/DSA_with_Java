@@ -35,7 +35,7 @@ public class search_insert_position
                 position = i;
                 break;
             }
-            else if(target <= nums[i+1])
+            else if(target <= nums[i+1] && target>=nums[i+1])
             {
                 position = i+1;
                 break;
@@ -43,4 +43,6 @@ public class search_insert_position
         }
         return position;
     }   
+
+
 }
