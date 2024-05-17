@@ -31,7 +31,6 @@ public class search_insert_position
         int u = nums.length-1;
         int mid;
 
-
         if(target < nums[0])
         {
             position = 0;
