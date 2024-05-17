@@ -26,23 +26,49 @@ public class search_insert_position
 {
     public static int searchInsert(int[] nums, int target) 
     {
-        int position = 0;
+        int position = -1;
+        int l = 0;
+        int u = nums.length-1;
+        int mid;
 
-        for(int i = 0 ; i<nums.length; i++)
+
+        if(target < nums[0])
         {
-            if(target == nums[i])
+            position = 0;
+        }
+        else if(target > nums[nums.length-1])
+        {
+            position = nums.length;
+        }
+        else
+        {
+            while (l<=u) 
             {
-                position = i;
-                break;
+                mid = Math.round((l+u)/2);
+    
+                if(nums[mid] == target)
+                {
+                    position = mid;
+                    break;
+                }
+                else if(nums[mid] > target)
+                {
+                    u = mid-1;
+                    position = mid;
+                }
+                else if(nums[mid] < target)
+                {
+                    l = mid+1;
+                }
             }
-            else if(target <= nums[i+1] && target>=nums[i+1])
-            {
-                position = i+1;
-                break;
-            }
+    
         }
         return position;
     }   
 
-
+    public static void main(String[] args) {
+        int[] nums = {1,3,5,7};
+        int position = searchInsert(nums, 6);
+        System.out.println(position);
+    }
 }
