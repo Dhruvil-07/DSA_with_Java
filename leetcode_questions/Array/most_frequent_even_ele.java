@@ -37,7 +37,6 @@ class most_frequent_even_ele
  {
     public static int mostFrequentEven(int[] nums) 
     {
-
         //max enrty
         Map.Entry<Integer,Integer> maxEntry = null;
 
